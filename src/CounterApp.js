@@ -5,11 +5,12 @@ import { LiaMinusSolid } from "react-icons/lia";
 
 function CounterApp() {
   const { count, increment, decrement, reset, setValue } = useCounter();
-  const [inputValue, setInputValue] = useState(""); // State to store the new value
-  const maxValue = 100;
+  const [inputValue, setInputValue] = useState("");
+  const maxValue = 10000000000000000000;
+
   const handleSetValue = () => {
     const parsedValue = Number(inputValue);
-    if (!isNaN(parsedValue)) {
+    if (!isNaN(parsedValue) && parsedValue <= maxValue) {
       setValue(parsedValue);
       setInputValue("");
     }
@@ -19,33 +20,38 @@ function CounterApp() {
     reset();
     setInputValue("");
   };
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSetValue();
+    }
+  };
+
   return (
     <div className="container">
       <div className="counter-container">
         <h1>{count}</h1>
         <div className=" input-container">
-          <button className=" buttons increment" onClick={increment}>
-            <IoAdd />
-          </button>
-
-          <button className="reset" onClick={handleReset}>
+          <button className=" buttons reset" onClick={handleReset}>
             Reset
           </button>
-
-          <input
-            type="number"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            style={{ wordWrap: "break-word", overflowWrap: "break-word" }}
-            placeholder="Enter a number"
-          />
-          <button className="set-value" onClick={handleSetValue}>
-            SetValue
+          <button className=" buttons increment" onClick={increment}>
+            <IoAdd />
           </button>
           <button className=" buttons decrement" onClick={decrement}>
             <LiaMinusSolid />
           </button>
         </div>
+        <input
+          type="number"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyPress={handleKeyPress}
+          style={{ wordWrap: "break-word", overflowWrap: "break-word" }}
+          placeholder="Enter a number"
+        />
+        <button className="set-value" onClick={handleSetValue}>
+          Enter
+        </button>
       </div>
     </div>
   );

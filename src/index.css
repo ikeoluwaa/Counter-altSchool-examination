@@ -40,7 +40,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 20px;
+  padding: 2rem;
   border-radius: 2rem;
   box-shadow: rgba(240, 46, 170, 0.4) 5px 5px 5px,
     rgba(240, 46, 170, 0.3) 10px 10px 10px,
@@ -66,7 +66,7 @@ body {
 }
 
 .link-container {
-  margin-top: 20px;
+  margin-top: rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -116,39 +116,22 @@ body {
   font-size: 2rem;
 }
 
-.container {
-  width: 100%;
-  height: 100%;
+.counter-container {
   background-color: #000000;
-  border-radius: 7px;
-  box-shadow: rgb(240, 46, 169) 5px 5px 5px,
-    rgba(255, 0, 162, 0.87) 10px 10px 10px,
-    rgba(240, 46, 170, 0.2) 15px 15px 15px,
-    rgba(240, 46, 170, 0.1) 20px 20px 20px,
-    rgba(255, 255, 255, 0.05) 25px 25px 25px;
   border-radius: 5rem;
   border: 3px solid #ff006e;
-}
-
-.counter-container {
-  margin-top: 2rem;
-  position: absolute;
-  width: 85%;
-  height: 70%;
-  background-color: #000000;
-  border-radius: 7px;
-  padding: 10rem;
-  display: flex;
-  flex-direction: column;
+  margin-top: 10rem;
+  color: #ff006e;
   align-items: center;
   justify-content: center;
-  /* box-shadow: rgb(240, 46, 169) 5px 5px 5px,
-    rgba(255, 0, 162, 0.87) 10px 10px 10px,
+  text-align: center;
+  padding: 2rem;
+  border-radius: 2rem;
+  box-shadow: rgba(240, 46, 170, 0.4) 5px 5px 5px,
+    rgba(240, 46, 170, 0.3) 10px 10px 10px,
     rgba(240, 46, 170, 0.2) 15px 15px 15px,
     rgba(240, 46, 170, 0.1) 20px 20px 20px,
-    rgba(255, 255, 255, 0.05) 25px 25px 25px; */
-  border-radius: 5rem;
-  border: 3px solid #ff006e;
+    rgba(240, 46, 170, 0.05) 25px 25px 25px;
 }
 
 .buttons {
@@ -161,6 +144,8 @@ body {
   font-size: 2.4rem;
   transition: 0.5s;
   background-color: #ff006e;
+  width: 12rem;
+  padding: 0.5rem;
 }
 
 .buttons:hover {
@@ -175,8 +160,7 @@ body {
   justify-content: center;
   margin-right: 2rem;
   position: relative;
-  top: -5rem;
-  left: 15rem;
+
   margin-bottom: 2rem;
 }
 
@@ -184,10 +168,30 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  top: -5rem;
-  left: -15rem;
   margin-bottom: 2rem;
+}
+.reset {
+  margin-right: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  padding: 0.65rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-light);
+  background: none;
+  color: #ff006e;
+  cursor: pointer;
+  font-size: 1.6rem;
+  border: 5px solid ##ff006e;
+  box-shadow: -1px 1px 5px 5px rgba(255, 0, 110, 1);
+  transition: 0.5s;
+}
+
+.reset:hover {
+  background-color: #000;
+  color: #fff;
+  transform: translateY(4px);
 }
 .container h1 {
   margin: 0 auto;
@@ -216,6 +220,7 @@ body {
   align-items: center;
   gap: 4px;
   margin-top: 10rem;
+  margin-bottom: 0rem;
 }
 
 input {
@@ -232,11 +237,12 @@ input {
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   margin-right: 3px;
   word-wrap: "break-word";
+  /* background: none; */
+  box-shadow: -9px 20px 70px -5px rgba(255, 0, 110, 0.86);
 }
 input:focus {
   outline: none;
   border: 1px solid var(--color-dark);
-  font-size: 2rem;
   text-align: center;
   border: 1px solid #ff006e;
   border-radius: 4px;
@@ -248,27 +254,6 @@ input::placeholder {
   font-weight: unset;
 }
 
-.reset {
-  padding: 0.65rem;
-  border-radius: 6px;
-  border: 1px solid var(--color-light);
-  background: none;
-  color: #ff006e;
-  cursor: pointer;
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  font-size: 1.6rem;
-  border: 5px solid ##ff006e;
-  box-shadow: -1px 1px 5px 5px rgba(255, 0, 110, 1);
-  transition: 0.5s;
-}
-
-.reset:hover {
-  background-color: #000;
-  color: #fff;
-  transform: translateY(4px);
-}
 .set-value {
   padding: 0.4rem;
   border-radius: 6px;
@@ -277,6 +262,7 @@ input::placeholder {
   color: #f7f7f7;
   cursor: pointer;
   padding: 1rem;
+  width: 10rem;
   gap: 0;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
@@ -289,7 +275,7 @@ input::placeholder {
   height: 5rem;
   transition: 0.5s;
   background-color: #ff006e;
-  box-shadow: -1px 1px 5px 2px rgba(255, 0, 110, 1);
+  box-shadow: -9px 20px 70px -10px rgba(255, 0, 110, 0.86);
 }
 .nav ul {
   display: flex;
@@ -318,8 +304,6 @@ input::placeholder {
   color: #680747;
   background-color: #fff;
 }
-
-/* border: 3px solid #ff006e; */
 
 .count {
   color: white;
@@ -399,6 +383,6 @@ input::placeholder {
     margin: 10rem 40rem;
   }
   .counter-container h1 {
-    font-size: 3.6rem;
+    font-size: 4.8rem;
   }
 }
