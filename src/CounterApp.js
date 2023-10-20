@@ -20,23 +20,27 @@ function CounterApp() {
     <>
       <div className="container">
         <h1>{count}</h1>
-        <button className=" buttons increment" onClick={increment}>
-          <IoAdd />
-        </button>
-        <button className=" buttons decrement" onClick={decrement}>
-          <LiaMinusSolid />
-        </button>
-        <button className="reset" onClick={reset}>
-          Reset
-        </button>
-        <input
-          type="number"
-          value={newValue}
-          onChange={(e) => setNewValue(e.target.value)}
-        />
-        <button className="set-value" onClick={handleSetValue}>
-          Set Value
-        </button>
+        <div className=" input-container">
+          <button className=" buttons increment" onClick={increment}>
+            <IoAdd />
+          </button>
+
+          <button className="reset" onClick={reset}>
+            Reset
+          </button>
+
+          <input
+            type="number"
+            value={newValue}
+            onChange={(e) => setNewValue(e.target.value)}
+          />
+          <button className="set-value" onClick={handleSetValue}>
+            SetValue
+          </button>
+          <button className=" buttons decrement" onClick={decrement}>
+            <LiaMinusSolid />
+          </button>
+        </div>
       </div>
     </>
   );

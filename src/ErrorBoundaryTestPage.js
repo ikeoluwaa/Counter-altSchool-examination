@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import ErrorBoundary from "./ErrorBoundary";
+import { NavLink } from "react-router-dom";
 
 function ErrorBoundaryTestPage() {
+  const [error, setError] = useState(false);
+
   const throwError = () => {
-    throw new Error("This is an error for testing error boundaries.");
+    if (error) {
+      // Intentionally throw an error
+      throw new Error(
+        "This is an intentional error for testing error boundaries."
+      );
+    }
   };
 
   return (
-    <div>
-      <h1>Error Boundary Test Page</h1>
-      <button onClick={throwError}>Throw an Error</button>
-      <ErrorBoundary />
+    <div className="error-bound">
+      <h1>Error Boundary Test Page:</h1>
+      <p>
+        <button onClick={() => setError(true)}>Throw an Error</button>
+        <ErrorBoundary>{throwError()} </ErrorBoundary>
+      </p>
     </div>
   );
 }
