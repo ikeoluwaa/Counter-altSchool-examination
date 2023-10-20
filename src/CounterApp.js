@@ -6,11 +6,10 @@ import { LiaMinusSolid } from "react-icons/lia";
 function CounterApp() {
   const { count, increment, decrement, reset, setValue } = useCounter();
   const [inputValue, setInputValue] = useState("");
-  const maxValue = 10000000000000000000;
 
   const handleSetValue = () => {
     const parsedValue = Number(inputValue);
-    if (!isNaN(parsedValue) && parsedValue <= maxValue) {
+    if (!isNaN(parsedValue)) {
       setValue(parsedValue);
       setInputValue("");
     }
