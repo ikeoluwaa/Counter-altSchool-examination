@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <div className="home">
-        <h1>Welcome to the CounterApp</h1>
+        <h1>Welcome to the CounterApp 💕</h1>
         <p>This is a simple Counter website </p>
         <div className="link-container">
           <Link className="home-counter-link" to="/counter">

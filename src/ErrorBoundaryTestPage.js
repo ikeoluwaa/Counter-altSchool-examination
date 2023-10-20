@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import ErrorBoundary from "./ErrorBoundary";
-import { NavLink } from "react-router-dom";
 
 function ErrorBoundaryTestPage() {
   const [error, setError] = useState(false);
 
   const throwError = () => {
     if (error) {
-      // Intentionally throw an error
       throw new Error(
         "This is an intentional error for testing error boundaries."
       );

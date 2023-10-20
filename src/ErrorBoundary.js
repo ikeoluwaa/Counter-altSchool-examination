@@ -1,22 +1,25 @@
+// ErrorBoundary.js
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class ErrorBoundary extends Component {
-  state = { hasError: false, error: null };
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
 
   componentDidCatch(error, info) {
-    this.setState({ hasError: true, error });
+    this.setState({ hasError: true });
+    console.error(error, info);
   }
 
   render() {
     if (this.state.hasError) {
       return (
         <div className="error-boundary">
-          <h2>Something went wrong</h2>
-          <p>{this.state.error.toString()}</p>
-          <NavLink className="link" to="/">
-            Home
-          </NavLink>
+          <h1>Something went wrong.</h1>
+          <p>We're sorry, but an error occurred 😢.</p>
+          <Link to="/">Go back to the main application</Link>
         </div>
       );
     }

@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter,
-  Router,
-  Routes,
-  Route,
-  NavLink,
-} from "react-router-dom";
+import { BrowserRouter, Link, Routes, Route, NavLink } from "react-router-dom";
 
 import CounterApp from "./CounterApp";
 import ErrorBoundary from "./ErrorBoundary";
@@ -16,15 +10,12 @@ import ErrorBoundaryTestPage from "./ErrorBoundaryTestPage";
 function App() {
   return (
     <>
-      {/* <Home /> */}
       <BrowserRouter>
         <ErrorBoundary>
           <nav className="nav">
             <ul>
               <li>
-                <NavLink className="link" to="/">
-                  Home
-                </NavLink>
+                <Link to="/">Home</Link>
               </li>
               <li>
                 <NavLink className="link" to="/counter">
@@ -38,9 +29,23 @@ function App() {
           </nav>
           <Routes>
             <Route path="/counter" element={<CounterApp />} />
-            <Route path="/" element={<Home />} />
-            <Route path="*" element={<NotFound />} />
             <Route path="/error-test" element={<ErrorBoundaryTestPage />} />
+            <Route
+              path="/"
+              element={
+                <ErrorBoundary>
+                  <Home />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="*"
+              element={
+                <ErrorBoundary>
+                  <NotFound />
+                </ErrorBoundary>
+              }
+            />
           </Routes>
         </ErrorBoundary>
       </BrowserRouter>

@@ -2,20 +2,22 @@ import { useState } from "react";
 import { useCounter } from "./useCounter";
 import { IoAdd } from "react-icons/io5";
 import { LiaMinusSolid } from "react-icons/lia";
-import { NavLink } from "react-router-dom";
 
 function CounterApp() {
   const { count, increment, decrement, reset, setValue } = useCounter();
-  const [newValue, setNewValue] = useState(0); // State to store the new value
+  const [inputValue, setInputValue] = useState(""); // State to store the new value
 
   const handleSetValue = () => {
-    const parsedValue = Number(newValue);
+    const parsedValue = Number(inputValue);
     if (!isNaN(parsedValue)) {
       setValue(parsedValue);
-      setNewValue("");
+      setInputValue("");
     }
   };
-
+  const handleReset = () => {
+    reset();
+    setInputValue("");
+  };
   return (
     <>
       <div className="container">
@@ -25,14 +27,16 @@ function CounterApp() {
             <IoAdd />
           </button>
 
-          <button className="reset" onClick={reset}>
+          <button className="reset" onClick={handleReset}>
             Reset
           </button>
 
           <input
             type="number"
-            value={newValue}
-            onChange={(e) => setNewValue(e.target.value)}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            style={{ wordWrap: "break-word" }}
+            placeholder="Enter a number"
           />
           <button className="set-value" onClick={handleSetValue}>
             SetValue
