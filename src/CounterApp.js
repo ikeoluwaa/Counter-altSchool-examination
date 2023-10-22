@@ -6,10 +6,11 @@ import { LiaMinusSolid } from "react-icons/lia";
 function CounterApp() {
   const { count, increment, decrement, reset, setValue } = useCounter();
   const [inputValue, setInputValue] = useState("");
+  const maxValue = 1000000000000;
 
   const handleSetValue = () => {
     const parsedValue = Number(inputValue);
-    if (!isNaN(parsedValue)) {
+    if (!isNaN(parsedValue) && parsedValue <= maxValue) {
       setValue(parsedValue);
       setInputValue("");
     }
@@ -19,18 +20,14 @@ function CounterApp() {
     reset();
     setInputValue("");
   };
-
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       handleSetValue();
     }
   };
-
   const handleInputChange = (event) => {
     const value = event.target.value;
-
-    // Check if the input is a valid number
-    if (/^\d*$/.test(value)) {
+    if (value <= maxValue || value === "") {
       setInputValue(value);
     }
   };
@@ -39,14 +36,14 @@ function CounterApp() {
     <div className="container">
       <div className="counter-container">
         <h1>{count}</h1>
-        <div className="input-container">
-          <button className="buttons reset" onClick={handleReset}>
+        <div className=" input-container">
+          <button className=" buttons reset" onClick={handleReset}>
             Reset
           </button>
-          <button className="buttons increment" onClick={increment}>
+          <button className=" buttons increment" onClick={increment}>
             <IoAdd />
           </button>
-          <button className="buttons decrement" onClick={decrement}>
+          <button className=" buttons decrement" onClick={decrement}>
             <LiaMinusSolid />
           </button>
         </div>
@@ -65,5 +62,4 @@ function CounterApp() {
     </div>
   );
 }
-
 export default CounterApp;
