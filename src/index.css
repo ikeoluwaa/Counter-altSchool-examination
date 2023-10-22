@@ -112,7 +112,7 @@ body {
 }
 
 .page-404 {
-  color: #fff;
+  color: #000;
   font-size: 2rem;
 }
 
@@ -178,16 +178,14 @@ body {
   margin-bottom: 2rem;
   padding: 0.65rem;
   border-radius: 6px;
-  border: 1px solid var(--color-light);
   background: none;
   color: #ff006e;
   cursor: pointer;
   font-size: 1.6rem;
-  border: 5px solid ##ff006e;
+  border: 5px solid #ff006e;
   box-shadow: -1px 1px 5px 5px rgba(255, 0, 110, 1);
   transition: 0.5s;
 }
-
 .reset:hover {
   background-color: #000;
   color: #fff;
@@ -380,7 +378,7 @@ input::placeholder {
 }
 @media (min-width: 900px) {
   .counter-container {
-    width: 60%;
+    width: 50%;
     margin: 10rem 40rem;
   }
   .counter-container h1 {

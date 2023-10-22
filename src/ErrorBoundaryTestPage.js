@@ -17,8 +17,8 @@ function ErrorBoundaryTestPage() {
       <h1>Error Boundary Test Page:</h1>
       <p>
         <button onClick={() => setError(true)}>Throw an Error</button>
-        <ErrorBoundary>{throwError()} </ErrorBoundary>
       </p>
+      <ErrorBoundary>{error && throwError()}</ErrorBoundary>
     </div>
   );
 }

@@ -1,4 +1,3 @@
-// ErrorBoundary.js
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
@@ -19,7 +18,9 @@ class ErrorBoundary extends Component {
         <div className="error-boundary">
           <h1>Something went wrong.</h1>
           <p>We're sorry, but an error occurred 😢.</p>
-          <Link to="/">Go back to the main application</Link>
+          <Link to="/" onClick={() => this.setState({ hasError: false })}>
+            Go back to the main application
+          </Link>
         </div>
       );
     }

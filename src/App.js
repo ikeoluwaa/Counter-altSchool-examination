@@ -22,9 +22,11 @@ function App() {
                   Counter
                 </NavLink>
               </li>
-              <NavLink className="link" to="/error-test">
-                Error Test
-              </NavLink>
+              <li>
+                <NavLink className="link" to="/error-test">
+                  Error Test
+                </NavLink>
+              </li>
             </ul>
           </nav>
           <Routes>

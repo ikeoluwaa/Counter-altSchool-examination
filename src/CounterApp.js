@@ -6,10 +6,11 @@ import { LiaMinusSolid } from "react-icons/lia";
 function CounterApp() {
   const { count, increment, decrement, reset, setValue } = useCounter();
   const [inputValue, setInputValue] = useState("");
+  const maxValue = 1000000000000;
 
   const handleSetValue = () => {
     const parsedValue = Number(inputValue);
-    if (!isNaN(parsedValue)) {
+    if (!isNaN(parsedValue) && parsedValue <= maxValue) {
       setValue(parsedValue);
       setInputValue("");
     }
@@ -22,6 +23,12 @@ function CounterApp() {
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       handleSetValue();
+    }
+  };
+  const handleInputChange = (event) => {
+    const value = event.target.value;
+    if (value <= maxValue || value === "") {
+      setInputValue(value);
     }
   };
 
@@ -43,7 +50,7 @@ function CounterApp() {
         <input
           type="number"
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={handleInputChange}
           onKeyPress={handleKeyPress}
           style={{ wordWrap: "break-word", overflowWrap: "break-word" }}
           placeholder="Enter a number"
