@@ -6,11 +6,10 @@ import { LiaMinusSolid } from "react-icons/lia";
 function CounterApp() {
   const { count, increment, decrement, reset, setValue } = useCounter();
   const [inputValue, setInputValue] = useState("");
-  const maxValue = 1000000000000;
 
   const handleSetValue = () => {
     const parsedValue = Number(inputValue);
-    if (!isNaN(parsedValue) && parsedValue <= maxValue) {
+    if (!isNaN(parsedValue)) {
       setValue(parsedValue);
       setInputValue("");
     }
@@ -20,14 +19,18 @@ function CounterApp() {
     reset();
     setInputValue("");
   };
+
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       handleSetValue();
     }
   };
+
   const handleInputChange = (event) => {
     const value = event.target.value;
-    if (value <= maxValue || value === "") {
+
+    // Check if the input is a valid number
+    if (/^\d*$/.test(value)) {
       setInputValue(value);
     }
   };
@@ -36,14 +39,14 @@ function CounterApp() {
     <div className="container">
       <div className="counter-container">
         <h1>{count}</h1>
-        <div className=" input-container">
-          <button className=" buttons reset" onClick={handleReset}>
+        <div className="input-container">
+          <button className="buttons reset" onClick={handleReset}>
             Reset
           </button>
-          <button className=" buttons increment" onClick={increment}>
+          <button className="buttons increment" onClick={increment}>
             <IoAdd />
           </button>
-          <button className=" buttons decrement" onClick={decrement}>
+          <button className="buttons decrement" onClick={decrement}>
             <LiaMinusSolid />
           </button>
         </div>
@@ -53,13 +56,17 @@ function CounterApp() {
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
           style={{ wordWrap: "break-word", overflowWrap: "break-word" }}
-          placeholder="Enter a number"
+          placeholder="Enter a number (letters are not allowed)"
         />
         <button className="set-value" onClick={handleSetValue}>
           Enter
         </button>
+        {isNaN(inputValue) && inputValue !== "" && (
+          <p className="error-message">Please enter a valid number.</p>
+        )}
       </div>
     </div>
   );
 }
+
 export default CounterApp;
