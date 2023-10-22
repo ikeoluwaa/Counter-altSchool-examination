@@ -26,15 +26,6 @@ function CounterApp() {
     }
   };
 
-  const handleInputChange = (event) => {
-    const value = event.target.value;
-
-    // Check if the input is a valid number
-    if (/^\d*$/.test(value)) {
-      setInputValue(value);
-    }
-  };
-
   return (
     <div className="container">
       <div className="counter-container">
@@ -53,17 +44,14 @@ function CounterApp() {
         <input
           type="number"
           value={inputValue}
-          onChange={handleInputChange}
+          onChange={(e) => setInputValue(e.target.value)}
           onKeyPress={handleKeyPress}
           style={{ wordWrap: "break-word", overflowWrap: "break-word" }}
-          placeholder="Enter a number (letters are not allowed)"
+          placeholder="Enter a number"
         />
         <button className="set-value" onClick={handleSetValue}>
           Enter
         </button>
-        {isNaN(inputValue) && inputValue !== "" && (
-          <p className="error-message">Please enter a valid number.</p>
-        )}
       </div>
     </div>
   );
